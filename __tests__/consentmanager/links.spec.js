@@ -19,6 +19,42 @@ beforeAll (function() {
         }); 
 });
 
+it('should get links', function() {
+    console.log("in test");
+
+    return frisby
+        // .use(withBasicAuth)
+        .setup({
+            request: {
+                headers: {
+                    'Authorization': Buffer.from(authToken).toString('ascii'),
+                    'Content-Type': 'application/json'
+                }
+            }
+        })
+        .get('http://dev.tweka.in/cm/patients/links')
+        // .inspectRequest()
+        .expect('status', 200)
+        .expect('header', 'Content-Type', 'application/json')
+        .then(function (res) {
+            var data = JSON.parse(res['body']);
+            console.log('links -> ', data);
+            // expect(data.status).toBe('SUCCEEDED');
+        });
+});     
+
+afterAll (function() {
+    console.log("in after all");
+});
+
+
+
+
+
+
+
+///// --------------->
+
 // function withBasicAuth(spec) {
 //     spec.setup({
 //         request: {
@@ -38,31 +74,3 @@ beforeAll (function() {
 //         }
 //     }
 // });
-
-it('should get links', function() {
-    console.log("in test");
-
-    return frisby
-        // .use(withBasicAuth)
-        .setup({
-            request: {
-                headers: {
-                    'Authorization': Buffer.from(authToken).toString('ascii'),
-                    'Content-Type': 'application/json'
-                }
-            }
-        })
-        .get('http://dev.tweka.in/cm/patients/links')
-        .inspectRequest()
-        .expect('status', 200)
-        .expect('header', 'Content-Type', 'application/json')
-        .then(function (res) {
-            var data = JSON.parse(res['body']);
-            console.log('links -> ', data);
-            // expect(data.status).toBe('SUCCEEDED');
-        });
-});     
-
-afterAll (function() {
-    console.log("in after all");
-});
