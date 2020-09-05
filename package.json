@@ -1,6 +1,7 @@
 {
   "name": "frisbytestframework",
   "version": "1.0.0",
+  "type": "module",
   "description": "Frisby Framework",
   "main": "index.js",
   "scripts": {
