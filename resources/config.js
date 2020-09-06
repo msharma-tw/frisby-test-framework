@@ -1,11 +1,12 @@
+// <---------------------------------------------------> THIS JS FILE CONTAINS TEST DATA REQUIRED FOR CONFIG <-------------------------------------------------->
 
 var config = {};
 
-config.base_url = 'http://dev.tweka.in/',
-config.username = 'test.sb.005@ndhm',
-config.password = 'Test135@'
+config.cm_base_url  = 'http://dev.tweka.in/cm',
+config.hiu_base_url = 'http://dev.tweka.in/api-hiu',
+config.username     = 'test.sb.005@ndhm',
+config.password     = 'Test135@'
 
 
-module.exports = config;
 
-    
+module.exports = config;    

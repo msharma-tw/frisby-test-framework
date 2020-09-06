@@ -21,3 +21,5 @@ class loginPatient {
         return this;
     }
 }
+
+module.exports = loginPatient;

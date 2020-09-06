@@ -1,72 +1,43 @@
-// const frisby = require('frisby');
-// var payloads = require('../../models/payloads');
+const frisby = require('frisby');
+var payloads = require('../../models/payloads');
+const config = require('../../resources/config');
 
-// let authToken;
+let authToken;
 
-// beforeAll (function() {
-//     console.log("in before all");
-//     return frisby
-//         .post('http://dev.tweka.in/cm/sessions', payloads.sessionPayload)
-//         .expect('status', 200)
-//         .then(function (res) {
-//             var data = JSON.parse(res['body']);
-//             authToken = Buffer.from(data.token);
-//             // expect(data.status).toBe('SUCCEEDED');
-//         }); 
-// });
+// usage of hooks
+beforeAll (function() {
+    return frisby
+        .post(config.cm_base_url + '/sessions', payloads.sessionPayload)
+        .expect('status', 200)
+        .then(function (res) {
+            var data = JSON.parse(res['body']);
+            authToken = Buffer.from(data.token);
+            // expect(data.status).toBe('SUCCEEDED');
+        }); 
+});
 
-// it('should get links', function() {
-//     console.log("in test");
+function getHeaders() {
+    return { 
+            headers: {
+                'Authorization': Buffer.from(authToken).toString('ascii'),
+                'Content-Type': 'application/json'
+            }
+    };
+}
 
-//     return frisby
-//         // .use(withBasicAuth)
-//         .setup({
-//             request: {
-//                 headers: {
-//                     'Authorization': Buffer.from(authToken).toString('ascii'),
-//                     'Content-Type': 'application/json'
-//                 }
-//             }
-//         })
-//         .get('http://dev.tweka.in/cm/patients/links')
-//         // .inspectRequest()
-//         .expect('status', 200)
-//         .expect('header', 'Content-Type', 'application/json')
-//         .then(function (res) {
-//             var data = JSON.parse(res['body']);
-//             console.log('links -> ', data);
-//             // expect(data.status).toBe('SUCCEEDED');
-//         });
-// });     
+it('should get link accounts', function() {
+    return frisby
+        .setup({
+            request: getHeaders()
+        })
+        .get(config.cm_base_url + '/patients/links')
+        // .inspectRequest()
+        .expect('status', 200)
+        .then(function (res) {
+            var data = JSON.parse(res['body']);
+        });
+});     
 
-// afterAll (function() {
-//     console.log("in after all");
-// });
-
-
-
-
-
-
-
-// ///// --------------->
-
-// // function withBasicAuth(spec) {
-// //     spec.setup({
-// //         request: {
-// //             headers : {
-// //                 'Authorization': Buffer.from(authToken).toString('base64') ,
-// //                 'Content-Type': 'application/json'
-// //             }
-// //         }
-// //     });
-// // }
-
-// // frisby.globalSetup ({
-// //     request: {
-// //         headers : {
-// //             'Authorization': Buffer.from(authToken).toString(),
-// //             'Content-Type': 'application/json'
-// //         }
-// //     }
-// // });
+afterAll (function() {
+    // console.log("in after all");
+});
