@@ -1,4 +1,4 @@
-class loginPatient {
+class LoginPatient {
 
     constructor() {
         this.username = undefined;
@@ -22,4 +22,4 @@ class loginPatient {
     }
 }
 
-module.exports = loginPatient;
+module.exports = LoginPatient;

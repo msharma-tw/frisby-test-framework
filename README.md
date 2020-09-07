@@ -14,6 +14,6 @@
 ## Run first test
 
 - Update username and passowrd in create.session.spec.js
-- Run `Jest` in another terminal
+- Run `npm run test` in another terminal
 
 **Congratulations!!! You have successfully run your first test.**
