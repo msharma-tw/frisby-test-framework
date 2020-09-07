@@ -1,41 +1,36 @@
 const frisby   = require('frisby');
 const Joi      = frisby.Joi;
 const payloads = require('../../models/payloads');
-const config   = require('../../resources/config');
-
-let authToken;
-
-function getHeaders() {
-    return { 
-            headers: {
-                'Authorization': Buffer.from(authToken).toString('ascii'),
-                'Content-Type': 'application/json'
-            }
-    };
-}
+const apis = require('../../apimodules/apis');
 
 //chaining of api-calls with assertions on jsonTypes
 //drawback - if api-chain is long then test can get heavy
 it('should create session', function() {
+    // arrange
+    var data = payloads.sessionPayload;
 
-    //create session
-    return frisby
-        .post(config.cm_base_url + '/sessions', payloads.sessionPayload)
-        .expect('status', 200)
-        .then(function (res) {
-            var data = JSON.parse(res['body']);
-            authToken = Buffer.from(data.token);
-            
-            //fetch-profile details of patient
-            return frisby
-                .setup({
-                    request: getHeaders()
-                })
-                .get(config.cm_base_url + "/patients/me")
-                .expect('status', 200)
-                .expect('jsonTypes', 'verifiedIdentifiers.*', { // Assert *each* object in 'items' array
-                    type: Joi.string(),
-                    value: Joi.string().required()
-                });
-        });
-});     
+    // act
+    var response = apis.createSession(data)
+
+    // assert
+    response.expect('status', 200);
+});  
+
+it("should return profile", async function() {
+    // arrange
+    var data = payloads.sessionPayload;
+    var res = await apis.createSession(data);
+    var data = JSON.parse(res['body']);
+    var authToken = Buffer.from(data.token);
+
+    // act
+    var response = apis.getProfile(authToken);
+
+    // assert
+    response
+    .expect('status', 200)
+    .expect('jsonTypes', 'verifiedIdentifiers.*', { // Assert *each* object in 'items' array
+        type: Joi.string(),
+        value: Joi.string().required()
+    });
+})
