@@ -5,6 +5,15 @@ const config   = require('../../resources/config');
 
 let authToken;
 
+frisby
+    .globalSetup({
+        request: {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }  
+    });
+
 function getHeaders() {
     return { 
             headers: {
