@@ -1,6 +1,6 @@
 ### <----------------------------------------> GIT HUB ACTIONS - FOR TEST EXECUTION <----------------------------------------> ###
 
-name: Frisby CI
+name: Test Execution
 
 # start job on all push #
 on:
@@ -16,16 +16,17 @@ jobs:
         steps:
             - name: Clone the Repository
               uses: actions/checkout@v2
+              uses: actions/setup-node@v1
             - name: Set up JDK 1.8
               uses: actions/setup-java@v1
               with:
                 java-version: 11
             - name: Install Dependencies
-                run: npm install
+              run: npm ci
             - name: Run Tests
-                run: jest
+              run: jest
             - name: Print Run id
-                run: echo $GITHUB_RUN_ID
+              run: echo $GITHUB_RUN_ID
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
