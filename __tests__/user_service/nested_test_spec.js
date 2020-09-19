@@ -5,6 +5,9 @@ const config   = require('../../resources/config');
 
 let authToken;
 
+
+//test comment
+
 frisby
     .globalSetup({
         request: {
