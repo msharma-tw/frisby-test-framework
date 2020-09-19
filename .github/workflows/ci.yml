@@ -1,4 +1,4 @@
-### <----------------------------------------> GIT HUB ACTIONS <----------------------------------------> ###
+### <----------------------------------------> GIT HUB ACTIONS - FOR TEST EXECUTION <----------------------------------------> ###
 
 name: Frisby CI
 
@@ -20,10 +20,12 @@ jobs:
               uses: actions/setup-java@v1
               with:
                 java-version: 11
-            - name: Run tests
-              run: jest
+            - name: Install Dependencies
+                run: npm install
+            - name: Run Tests
+                run: jest
             - name: Print Run id
-              run: echo $GITHUB_RUN_ID
+                run: echo $GITHUB_RUN_ID
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
