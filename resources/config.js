@@ -2,11 +2,9 @@
 
 var config = {};
 
-config.cm_base_url  = 'https://dev.tweka.in/cm',
-config.hiu_base_url = 'https://dev.tweka.in/api-hiu',
-config.username     = 'test.sb.005@ndhm',
+config.cm_base_url  = 'https://dev.tweka.in/cm'
+config.hiu_base_url = 'https://dev.tweka.in/api-hiu'
+config.username     = 'test.sb.005@ndhm'
 config.password     = 'Test135@'
-
-
 
 module.exports = config;    
