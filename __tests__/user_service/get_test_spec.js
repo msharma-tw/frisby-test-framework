@@ -10,5 +10,3 @@ it("should be UP for heartbeat", function () {
     .expect('json', 'status', 'UP')
     .expectNot('json', { result: 'error' });
 });
-
-//test
