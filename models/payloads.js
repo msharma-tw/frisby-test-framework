@@ -1,6 +1,7 @@
 const config        = require('../resources/config');
-const testdata      = require('../resources/constants');
 const loginPatient  = require('./LoginPatient');
+const testdata      = require('../resources/constants');
+
 
 var payloads = {};
 
