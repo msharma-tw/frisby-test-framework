@@ -20,8 +20,8 @@ jobs:
               uses: actions/setup-node@v1
             - name: print secrets
               run: |
-                echo $FR_TEST_TOKEN >> ./.env
-                cat src/.env
+                echo $FR_TEST_TOKEN >> .env
+                cat .env
               shell: bash
               env:
                 FR_TEST_TOKEN: ${{ secrets.TEST_TOKEN }}
