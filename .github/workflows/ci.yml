@@ -30,4 +30,5 @@ jobs:
                 GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
                 FR_USERNAME: ${{ secrets.USERNAME }}
                 FR_PASSWORD: ${{ secrets.PASSWORD }}
+                FR_TEST_TOKEN: ${{ secrets.TEST_TOKEN }}
 
