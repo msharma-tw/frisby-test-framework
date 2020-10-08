@@ -26,9 +26,6 @@ function getHeaders() {
 //drawback - if api-chain is long then test can get heavy
 it('should create session', function() {
 
-    
-
-
     //create session
     return frisby
         .post(config.cm_base_url + '/sessions', payloads.sessionPayload)
