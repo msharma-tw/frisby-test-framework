@@ -1,5 +1,3 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
 const frisby = require("frisby");
 const config = require('../../resources/config');
 
