@@ -1,4 +1,3 @@
-const config        = require('../resources/config');
 const loginPatient  = require('./LoginPatient');
 const constants     = require('../resources/constants');
 
@@ -6,12 +5,12 @@ const constants     = require('../resources/constants');
 var payloads = {};
 
 //Create session Request-Body
-payloads.sessionPayload = new loginPatient().setUsername(config.username)
-                                .setPassword(config.password)
+payloads.sessionPayload = new loginPatient().setUsername(process.env.FR_USERNAME)
+                                .setPassword(process.env.FR_PASSWORD)
                                 .setGrantType(constants.grantType);
 
-payloads.invalidSessionPayload = new loginPatient().setUsername(testdata.invalidHealthId)
-                                    .setPassword(config.password)
+payloads.invalidSessionPayload = new loginPatient().setUsername(constants.invalidUsername)
+                                    .setPassword(process.env.FR_PASSWORD)
                                     .setGrantType(constants.grantType);
 
 

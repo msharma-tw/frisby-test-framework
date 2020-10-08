@@ -22,6 +22,7 @@ function getHeaders() {
     };
 }
 
+//test
 //chaining of api-calls with assertions on jsonTypes
 //drawback - if api-chain is long then test can get heavy
 it('should create session', function() {

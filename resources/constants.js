@@ -3,7 +3,7 @@
 var constants = {};
 
 constants.grantType         = 'password'
-constants.invalidHealthId   = 'test@ndhm'
+constants.invalidUsername   = 'test@ndhm'
 
 
 

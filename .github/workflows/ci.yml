@@ -28,4 +28,6 @@ jobs:
               run: echo $GITHUB_RUN_ID
               env:
                 GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
+                FR_USERNAME: ${{ secrets.USERNAME }}
+                FR_PASSWORD: ${{ secrets.PASSWORD }}
 
