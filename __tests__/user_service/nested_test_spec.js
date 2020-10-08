@@ -5,9 +5,6 @@ const config   = require('../../resources/config');
 
 let authToken;
 
-
-//test comment
-
 frisby
     .globalSetup({
         request: {
@@ -20,8 +17,7 @@ frisby
 function getHeaders() {
     return { 
             headers: {
-                'Authorization': Buffer.from(authToken).toString('ascii'),
-                'Content-Type': 'application/json'
+                'Authorization': Buffer.from(authToken).toString('ascii')
             }
     };
 }
@@ -29,6 +25,9 @@ function getHeaders() {
 //chaining of api-calls with assertions on jsonTypes
 //drawback - if api-chain is long then test can get heavy
 it('should create session', function() {
+
+    
+
 
     //create session
     return frisby

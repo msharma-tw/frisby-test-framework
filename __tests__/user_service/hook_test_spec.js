@@ -35,6 +35,7 @@ it('should get link accounts', function() {
         .expect('status', 200)
         .then(function (res) {
             var data = JSON.parse(res['body']);
+            console.log(data);
         });
 });     
 

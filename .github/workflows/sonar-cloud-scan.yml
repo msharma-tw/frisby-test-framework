@@ -1,5 +1,4 @@
 ### <----------------------------------------> GIT HUB ACTIONS - FOR SONAR CUBE <----------------------------------------> ###
-
 name: Sonar Code Quality Scan
 
 # start job on all push #
